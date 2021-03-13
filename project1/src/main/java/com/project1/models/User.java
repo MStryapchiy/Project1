@@ -1,4 +1,4 @@
-package com.project1.db;
+package com.project1.models;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,7 +14,9 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String username;
+    private String usersname;
     private String password;
+    private String email;
     private boolean active;
 
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
@@ -55,6 +57,22 @@ public class User implements UserDetails {
 
     public String getUsername() {
         return username;
+    }
+
+    public String getUsersname() {
+        return usersname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setUsersname(String usersname) {
+        this.usersname = usersname;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     @Override

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>User Greetings Page!</title>
+</head>
+<body>
+<form action="#" th:action="@{/HelloUser}" th:object="${usern}" method="get">
+<h1 th:text="'Hello ' + ${usern} + '!!!'"</h1>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out"/>
+</form>
+</body>
+</html>
