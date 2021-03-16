@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Collections;
 
@@ -27,12 +28,13 @@ public class RegistrationController {
     }
 
     @PostMapping("/reg")
-    public String addUser(User user, BindingResult bindingResult, Model model) {
-        User userFromDb = userRepo.findByEmail(user.getEmail());
-        if (userFromDb != null) {
-            bindingResult.rejectValue("email", "error.email", "User with this Email already exist");
-            return ("reg");
-        }
+    public ModelAndView addUser(User user, BindingResult bindingResult, Model model) {
+        //User userFromDb = userRepo.findByEmail(user.getEmail());
+        //if (userFromDb != null) {
+        //    bindingResult.rejectValue("email", "error.email", "User with this Email already exist");
+        //    model.addAttribute("userForm", new User());
+        //    return new ModelAndView("reg" , "userForm", user.getEmail());
+        //}
         //if (bindingResult.hasErrors()) {
         //    return new ModelAndView("reg");
         //}
@@ -40,6 +42,6 @@ public class RegistrationController {
         user.setRoles(Collections.singleton(Role.USER));
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         userRepo.save(user);
-        return ("redirect:/hello");
+        return new ModelAndView("HelloUser","usern",user.getUsername());
     }
 }

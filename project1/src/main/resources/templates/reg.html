@@ -9,7 +9,6 @@ Add new user
     <div><label> User Name : <input type="text" th:field="*{username}" /> </label></div>
     <div><label> User Surname : <input type="text" th:field="*{usersname}" /> </label></div>
     <div><label> Email: <input type="text" th:field=="*{email}"/><span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span></label></div>
-
     <div><label> Password: <input type="password" th:field=="*{password}"/> </label></div>
     <div><input type="submit" value="Submit"/></div>
 </form>
